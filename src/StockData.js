@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 
 const StockData = () => {
@@ -10,9 +11,7 @@ const StockData = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:8080/my-stocks');
-
         setStockData(response.data.List);
-
         setLoading(false);
       } catch (error) {
         console.log("Error fetching data:", error);
@@ -29,7 +28,7 @@ const StockData = () => {
   return (
     <div>
       <h2>Stock Data</h2>
-      <table>
+      <Table striped>
         <thead>
           <tr>
             <th>Symbol</th>
@@ -60,7 +59,7 @@ const StockData = () => {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
 
     </div>
   );
