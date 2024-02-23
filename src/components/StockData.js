@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import StockDisplay from './StockDisplay';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Spinner from 'react-bootstrap/Spinner';
 import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 
@@ -23,7 +27,17 @@ const StockData = () => {
   }, []);
 
   if(loading) {
-    return <div>Loading...</div>;
+    return (
+      <Container>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          </Col>
+        </Row>
+     </Container>
+   );
   }
 
   return (

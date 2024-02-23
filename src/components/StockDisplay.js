@@ -1,6 +1,12 @@
 import Table from 'react-bootstrap/Table';
+import Alert from 'react-bootstrap/Alert';
 
 const StockDisplay = ({stockData}) => {
+  if(stockData.length == 0) {
+    return (
+      <Alert variant="info">Please enter a ticker symbol in the search bar</Alert>
+    )
+  }
   return (
     <Table striped>
       <thead>

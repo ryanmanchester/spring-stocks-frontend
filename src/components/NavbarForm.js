@@ -6,19 +6,19 @@ import { Container, Navbar, Form, Row, Col, Button } from 'react-bootstrap';
 const NavbarForm = () => {
   const [searchField, setSearchField] = useState(null);
   const [symbol, setSymbol] = useState(null);
+  const [error, setError] = useState(null);
 
   const handleOnChange = (e) => {
     setSearchField(e.target.value);
   }
 
   const handleOnSubmit = async (e) => {
-    
-
     try{
       const result = await axios.get(`http://localhost:8080/add-stock/${searchField}`);
       setSymbol(result.data.List);
-    } catch {
-      console.log("Error searching");
+    } catch(error) {
+      console.error(error)
+      setError(error)
     }
 
   }
